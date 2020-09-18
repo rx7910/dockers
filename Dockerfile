@@ -1,5 +1,5 @@
   
-FROM duranx/alpine:base
+FROM alpine
 LABEL MAINTAINER rx <https://github.com/rx7910>
 
 ARG GOOS=linux
