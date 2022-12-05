@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  pupils:
+    container_name: pupils
+    image: duranx/pupils
+    environment:
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=db
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=pupils
+      - DATABASE_USERNAME=
+      - DATABASE_PASSWORD=
+      - AUTHENTICATION_DATABASE=pupils
+    ports:
+      - 1337:1337
+    volumes:
+      - ./app:/srv/app
+    depends_on:
+      - db
+
+  db:
+    container_name: mongo
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=pupils
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+    restart: always
